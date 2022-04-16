@@ -2,6 +2,8 @@
 
 ### A React App for the Udemy course "React Query: Server State Management for React"
 
+[Notes](notes.md)
+
 ## Installation
 
 Run `npm install`
