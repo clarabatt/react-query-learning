@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import { Posts } from "./Posts";
 import { QueryClient, QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
@@ -10,11 +10,11 @@ const queryClient = new QueryClient();
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-        <div className="App">
+      <div className="App">
         <h1>Blog Posts</h1>
         <Posts />
-        </div>
-        <ReactQueryDevtools/>
+      </div>
+      <ReactQueryDevtools />
     </QueryClientProvider>
   );
 }

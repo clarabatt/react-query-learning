@@ -1,5 +1,5 @@
-import React from 'react';
-import { useQuery } from "react-query";
+import React from "react";
+import { useQuery, useMutation } from "react-query";
 
 async function fetchComments(postId) {
   const response = await fetch(
@@ -25,14 +25,27 @@ async function updatePost(postId) {
 }
 
 export function PostDetail({ post }) {
-  const {data, isError, error, isLoading} = useQuery(['comments', post.id], () => fetchComments(post.id));
+  const { data, isError, error, isLoading } = useQuery(
+    ["comments", post.id],
+    () => fetchComments(post.id)
+  );
   if (isLoading) return <p>Loading</p>;
-  if (isError) return <p>Error: <span>{error.toString()}</span></p>;
+  if (isError)
+    return (
+      <p>
+        Error: <span>{error.toString()}</span>
+      </p>
+    );
+
+  const deletePostMutation = useMutation((postId) => deletePost(postId));
 
   return (
     <>
       <h3 style={{ color: "blue" }}>{post.title}</h3>
-      <button>Delete</button> <button>Update title</button>
+      <button onClick={() => deletePostMutation.mutate(post.id)}>
+        Delete
+      </button>{" "}
+      <button>Update title</button>
       <p>{post.body}</p>
       <h4>Comments</h4>
       {data.map((comment) => (

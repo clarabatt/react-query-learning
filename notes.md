@@ -18,7 +18,7 @@ Information stored on server (provided by API)
 
 ## What problem does React Query solve?
 
-The source of truth pass to be the *react query cache*
+The source of truth pass to be the _react query cache_
 
 > Cache management of server data on client
 > The code around of fetch data is menial.
@@ -67,23 +67,21 @@ no cached data, plus isFectching
 ## RQ Dev Tools
 
 - Shows queries (by key)
-    - status
-    - last updated
+  - status
+  - last updated
 - Data explorer
 - Query explorer
 
 ## States vs cachetime
 
 ### Stale
+
 Is no longer fresh
 staleTime = "max age"
 how long to tolerate?
 
 staleTime is for re-fetching
-cache is for data that might be re-used later
-    - query goes into "cold storage" if there's no active useQuery
-    - cache data expires after cacheTime (default:five minutes)
-    - how long it's been since the last active useQuery
+cache is for data that might be re-used later - query goes into "cold storage" if there's no active useQuery - cache data expires after cacheTime (default:five minutes) - how long it's been since the last active useQuery
 after the cache expires, the data is garbage collected
 cache is backup data to display while fetching. You can sent cache time to 0.
 
@@ -93,15 +91,17 @@ cache is backup data to display while fetching. You can sent cache time to 0.
 - Data for queries with known keys only refetched upon trigger
 
 Example triggers:
-    - Component remount
-    - window refocus
-    - running refetch function
-    - automated refetch
-    - query invalidation after a mutation
+
+- Component remount
+  - window refocus
+  - running refetch function
+  - automated refetch
+  - query invalidation after a mutation
 
 Solution for change the query:
-    - Pass array for the query key, not just a string
-    - Use a dependency array. Like the post id 
+
+- Pass array for the query key, not just a string
+- Use a dependency array. Like the post id
 
 ## Prefetching
 
@@ -109,3 +109,13 @@ Solution for change the query:
 - Automatically stale (configurable)
 - shows while re-fetching
 
+## Mutations
+
+Making a network call that changes data on the server
+
+Similar to useQuery, but:
+
+- returns mutate function
+- doesn't need query key (cause, we are not storying any data)
+- isLoading but no isFetching
+- by default, no retries (configurable)
