@@ -86,3 +86,19 @@ cache is for data that might be re-used later
     - how long it's been since the last active useQuery
 after the cache expires, the data is garbage collected
 cache is backup data to display while fetching. You can sent cache time to 0.
+
+## Keys
+
+- Every query uses the same key
+- Data for queries with known keys only refetched upon trigger
+
+Example triggers:
+    - Component remount
+    - window refocus
+    - running refetch function
+    - automated refetch
+    - query invalidation after a mutation
+
+Solution for change the query:
+    - Pass array for the query key, not just a string
+    - Use a dependency array. Like the post id 
