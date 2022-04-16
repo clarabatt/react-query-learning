@@ -102,3 +102,10 @@ Example triggers:
 Solution for change the query:
     - Pass array for the query key, not just a string
     - Use a dependency array. Like the post id 
+
+## Prefetching
+
+- Adds data to cache
+- Automatically stale (configurable)
+- shows while re-fetching
+
